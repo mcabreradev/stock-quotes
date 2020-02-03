@@ -1,0 +1,27 @@
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Oxygen:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/http-vue-loader"></script>
+    <script src="https://www.unpkg.com/browse/vue-carousel@0.18.0/dist/vue-carousel.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <Quotes></Quotes>
+  </div>
+
+  <script>
+    new window.Vue({
+      el: '#app',
+      components: {
+        'Quotes': window.httpVueLoader('Quotes.vue'),
+        'VueperSlides': window.httpVueLoader('VueCarousel.Carousel'), 
+        'Slide': window.httpVueLoader('VueCarousel.Slide') 
+      },
+    })
+  </script>
+</body>
+
+</html>
