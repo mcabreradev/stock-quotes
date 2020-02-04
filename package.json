@@ -21,6 +21,6 @@
   },
   "keywords": [],
   "engines": {
-    "node": "10.x"
+    "node": "11.x"
   }
 }
