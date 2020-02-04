@@ -7,6 +7,8 @@ var app = express();
 var cheerio = require("cheerio");
 var rp = require("request-promise");
 
+var port = process.env.PORT || 8080;
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -72,7 +74,6 @@ app.use(function(err, req, res, next) {
   res.render("error", { status: err.status, message: err.message });
 });
 
-// Listen on port 8080
-var listener = app.listen(8080, function() {
+var listener = app.listen(port, function() {
   console.log("Listening on port " + listener.address().port);
 });
