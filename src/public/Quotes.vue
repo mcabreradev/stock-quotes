@@ -9,7 +9,11 @@
         <div class="name">{{ quote.name }}</div>
         <div class="last">{{ quote.last }}</div>
         <div class="change">{{ quote.change }}</div>
-        <div class="day">{{ quote.day }}</div>
+        <div v-bind:class="'day day-'+quote.direction">
+          <span class="signal" v-if="quote.direction === 'negative'">- </span>
+          <span class="signal" v-else-if="quote.direction === 'positive'">+ </span>
+          <span> {{ quote.day }}</span>
+        </div>
       </li>
     </ul>
   </div>

@@ -36,9 +36,9 @@ app.get("/quotes", async (req, res) => {
         .attr("style")
         .split(":");
       let direction = row
-      .eq(4)
-      .find("img")
-      .attr("src");
+        .eq(4)
+        .find("img")
+        .attr("src");
 
       quotes.push({
         code: row.eq(0).text(),
