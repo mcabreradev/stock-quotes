@@ -1,13 +1,14 @@
 // init project
-var express = require("express");
-var bodyParser = require("body-parser");
-var path = require("path");
-var app = express();
+const express = require("express");
+const bodyParser = require("body-parser");
+const path = require("path");
+const app = express();
 
-var cheerio = require("cheerio");
-var rp = require("request-promise");
+const cheerio = require("cheerio");
+const rp = require("request-promise");
 
-var port = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
+const url = "http://www.eoddata.com/";
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,16 +24,16 @@ app.get("/", function(req, res) {
   res.render("index");
 });
 
-app.get("/quotes", async (req, res) => {
-  const url = "http://www.eoddata.com/";
+app.get("/api/quotes", async (req, res) => {
   let quotes = [];
-
   try {
     const data = await rp(url);
     const $ = cheerio.load(data);
     const carrousel = $("#ctl00_cph1_ql1_divQuotes");
     carrousel.find("tr").each(function(i, elem) {
-      if (i === 0) return;
+      if (i === 0){
+        return;
+      }
       let row = $(elem).find("td");
       let color = $(elem)
         .attr("style")
@@ -69,7 +70,6 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
-  // render the error page
   res.status(err.status || 500);
   res.render("error", { status: err.status, message: err.message });
 });
