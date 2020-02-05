@@ -4,7 +4,7 @@
 }
 
 body {
-  background-color: cadetblue;
+  background-color: var(--white);
   margin: 0px;
 }
 #quotes-root {
